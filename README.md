@@ -17,10 +17,10 @@ Generating a grid of 5x5 chunks:
 ```cpp
 HeightMap chunks(512, 512, 12345);
 uint16_t**** chnks = new uint16_t***[9];
-for(int i = 0; i < 9; i++)
+for(int i = 0; i < 5; i++)
 {
     chnks[i] = new uint16_t**[9];
-    for(int j = 0; j < 9; j++)
+    for(int j = 0; j < 5; j++)
     {
         chnks[i][j] = new uint16_t*[512];
         for(int r = 0; r < 512; r++)
@@ -28,9 +28,9 @@ for(int i = 0; i < 9; i++)
     }
 }
 
-for(int i = 0; i < 9; i++)
+for(int i = 0; i < 5; i++)
 {
-    for(int j = 0; j < 9; j++)
+    for(int j = 0; j < 5; j++)
     {
         chunks.generate(5, i, j);
         uint16_t** tmpHm = chunks.getHeightMap();
