@@ -35,10 +35,10 @@ class HeightMap
         }
 
         //Generates random height map
-        //   +turnFrequency: how frequently 1/x do you want the trend of the height to change
+        //   +rangeMultiplier: multiplied by the range after initial noise generation. adds padding to make the range smaller when the number increases. The number cannot be <1
         //   +offsX: the number of chunks in X direction to offset the perlin noise generator by
         //   +offsY: the number of chunks in Y direction to offset the perlin noise generator by
-        void generate(double changeFactor, int offsX, int offsY);
+        void generate(double rangeMultiplier, int offsX, int offsY);
 
         uint16_t** getHeightMap()
         {
