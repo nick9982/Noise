@@ -93,7 +93,6 @@ void HeightMap::generate(double rangeMultiplier, int offsX, int offsY)
     }
 
     //Moving the data away from avg towards either min_int or max_int
-    max_val = 0, min_val = 65535;
     for(int i = 0; i < x; i++)
     {
         for(int j = 0; j < y; j++)
@@ -103,22 +102,9 @@ void HeightMap::generate(double rangeMultiplier, int offsX, int offsY)
                 heightMap[i][j] += constant*(val-avg);
             else
                 heightMap[i][j] -= constant*(avg-val);
-
-            if(heightMap[i][j] > max_val)
-                max_val = heightMap[i][j];
-            if(heightMap[i][j] < min_val)
-                min_val = heightMap[i][j];
-        }
-    }
-    
-
-
-    //Creating the inverted height map, to potentially get two height maps out of one
-    for(int i = 0; i < x; i++)
-    {
-        for(int j = 0; j < y; j++)
-        {
-            invertedHeightMap[i][j] = 65535 - invertedHeightMap[i][j];
+            
+            //Creating an inverted height map.
+            invertedHeightMap[i][j] = 65535 - heightMap[i][j];
         }
     }
 }
