@@ -4,11 +4,10 @@
 int main(int argc, char *argv[])
 {
     HeightMap heightMap(512, 512);
-    heightMap.generate(5, 0, 0);
-    uint16_t **map = heightMap.getHeightMap();
+    heightMap.generate(0.7, 0, 0);
 
     //Save height map example:
-    //saveHeightMap("/your/target/directory/filename.png", heightMap.getInvertedHeightMap(), 512, 512);
+    //saveHeightMap("/your/target/directory/fileName.png", heightMap.getHeightMap(), 512, 512);
 
     //Generating multiple chunks:
 
@@ -31,12 +30,11 @@ int main(int argc, char *argv[])
         for(int j = 0; j < 9; j++)
         {
             chunks.generate(5, i, j);
-            uint16_t** tmpHm = chunks.getHeightMap();
             for(int r = 0; r < 512; r++)
             {
                 for(int x = 0; x < 512; x++)
                 {
-                    chnks[i][j][r][x] = tmpHm[r][x];
+                    chnks[i][j][r][x] = chunks.getHeightMap()[r][x];
                 }
             }
         }

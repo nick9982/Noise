@@ -9,8 +9,7 @@ Generating one height map and saving it as an image:
 ```cpp
 HeightMap heightMap(512, 512);
 heightMap.generate(5, 0, 0);
-uint16_t **map = heightMap.getHeightMap();
-saveHeightMap("/your/target/directory/filename.png", map, 512, 512);
+saveHeightMap("/your/target/directory/filename.png", heightMap.getHeightMap(), 512, 512);
 ```
 
 Generating a grid of 5x5 chunks:
@@ -33,12 +32,11 @@ for(int i = 0; i < 5; i++)
     for(int j = 0; j < 5; j++)
     {
         chunks.generate(5, i, j);
-        uint16_t** tmpHm = chunks.getHeightMap();
         for(int r = 0; r < 512; r++)
         {
             for(int x = 0; x < 512; x++)
             {
-                chnks[i][j][r][x] = tmpHm[r][x];
+                chnks[i][j][r][x] = chunks.getHeightMap()[r][x];
             }
         }
     }
